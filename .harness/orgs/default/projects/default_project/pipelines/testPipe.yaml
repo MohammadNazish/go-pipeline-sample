@@ -1,0 +1,34 @@
+pipeline:
+  name: testPipe
+  identifier: testPipe
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: echoTest
+        identifier: echoTest
+        description: ""
+        type: Custom
+        spec:
+          environment:
+            environmentRef: TestEnv
+            gitBranch: main
+            deployToAll: false
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: PowerShell
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "Test"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
